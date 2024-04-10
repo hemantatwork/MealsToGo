@@ -3,26 +3,24 @@ import { ScrollView, View } from "react-native";
 import RestaurantInfoCard from "./RestaurantInfoCard";
 import styled from "styled-components";
 
-const RestaurantInfoContainer = styled(View)`
+const RestaurantInfoContainer = styled(ScrollView)`
   flex: 1;
-  padding: 16px;
-  background-color: #ecca9c;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const CardContainer = styled(View)`
-  margin-bottom: 15px;
+  margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurantInfo = () => {
   return (
     <RestaurantInfoContainer>
-      <ScrollView>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CardContainer key={index}>
-            <RestaurantInfoCard />
-          </CardContainer>
-        ))}
-      </ScrollView>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <CardContainer key={index}>
+          <RestaurantInfoCard />
+        </CardContainer>
+      ))}
     </RestaurantInfoContainer>
   );
 };

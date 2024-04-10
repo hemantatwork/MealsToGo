@@ -4,7 +4,7 @@ import { Searchbar } from "react-native-paper";
 import styled from "styled-components";
 
 const SearchBarContainer = styled(View)`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
   background-color: #dba979;
 `;
 

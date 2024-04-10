@@ -1,14 +1,9 @@
 import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-  Text,
-} from "react-native";
+import { SafeAreaView, Platform, StatusBar } from "react-native";
 import RestaurantsScreen from "./src/features/restaurant/screens/RestaurantsScreen";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { theme } from "./src/infrastructure/theme";
 
 const isAndroid = Platform.OS === "android";
 
@@ -19,7 +14,9 @@ const AppContainer = styled(SafeAreaView)`
 export default function App() {
   return (
     <AppContainer>
-      <RestaurantsScreen />
+      <ThemeProvider theme={theme}>
+        <RestaurantsScreen />
+      </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </AppContainer>
   );

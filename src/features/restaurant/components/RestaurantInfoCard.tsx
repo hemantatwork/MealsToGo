@@ -2,13 +2,13 @@ import * as React from "react";
 import { Button, Card, Text } from "react-native-paper";
 import styled from "styled-components/native";
 
-const RatingContainer = styled.View<{ $primary?: boolean }>`
+const RatingContainer = styled.View`
   flex-direction: row;
-  padding-left: ${(props) => (props.$primary ? 10 : 20)}px;
+  padding-left: ${(props) => props.theme.space[3]};
 `;
 
 const CardCover = styled(Card.Cover)`
-  margin: 10px;
+  margin: ${(props) => props.theme.space[2]};
 `;
 
 const RestaurantInfoCard = ({ restaurant = {} }: any) => {
@@ -33,14 +33,14 @@ const RestaurantInfoCard = ({ restaurant = {} }: any) => {
     isClosedTemporarily
   );
   return (
-    <Card elevation={5}>
+    <Card mode="outlined">
       <Card.Content>
         <Text variant="titleLarge">{name}</Text>
         <Text variant="bodyMedium">{address}</Text>
       </Card.Content>
 
       <CardCover source={{ uri: photos[0] }} />
-      <RatingContainer $primary>
+      <RatingContainer>
         {Array.from({ length: rating }).map((_, index) => (
           <Text key={index}>⭐</Text>
         ))}
@@ -48,9 +48,6 @@ const RestaurantInfoCard = ({ restaurant = {} }: any) => {
       <Card.Actions>
         <Button>Cancel</Button>
         <Button>Ok</Button>
-        <Button>
-          <Text>Just to test</Text>
-        </Button>
       </Card.Actions>
     </Card>
   );
